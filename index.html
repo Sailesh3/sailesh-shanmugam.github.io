@@ -5,151 +5,222 @@
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Sailesh Shanmugam — Automation & Controls Engineer</title>
 <style>
-  *{margin:0;padding:0;box-sizing:border-box}
-  :root{--black:#111;--gray:#555;--light:#f7f7f7;--border:#e8e8e8;--accent:#3b5bdb}
-  html{scroll-behavior:smooth}
-  body{font-family:'Segoe UI',system-ui,sans-serif;color:var(--black);background:#fff;line-height:1.6}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
-  nav{position:fixed;top:0;width:100%;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);z-index:100;padding:0 2rem}
-  .nav-inner{max-width:960px;margin:auto;display:flex;justify-content:space-between;align-items:center;height:58px}
-  .logo{font-weight:700;font-size:1.05rem;color:var(--black);text-decoration:none}
-  .nav-links{display:flex;gap:1.6rem;list-style:none}
-  .nav-links a{text-decoration:none;color:var(--gray);font-size:.85rem;transition:color .2s}
-  .nav-links a:hover{color:var(--black)}
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0a0a0f;
+  --bg2:#111118;
+  --bg3:#16161e;
+  --border:#ffffff10;
+  --border2:#ffffff18;
+  --accent:#6366f1;
+  --accent2:#8b5cf6;
+  --accentRGB:99,102,241;
+  --text:#f1f1f5;
+  --muted:#9090a8;
+  --card:#13131a;
+  --grad:linear-gradient(135deg,#6366f1,#8b5cf6);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
 
-  section{padding:5.5rem 2rem}
-  .container{max-width:960px;margin:auto}
-  .section-label{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:.5rem}
-  .section-title{font-size:1.85rem;font-weight:800;letter-spacing:-.5px;margin-bottom:1.4rem}
+/* SCROLLBAR */
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--accent);border-radius:2px}
 
-  /* HERO */
-  #hero{padding-top:10rem;padding-bottom:6rem;min-height:100vh;display:flex;align-items:center}
-  .hero-tag{display:inline-block;font-size:.78rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);background:#eef1ff;padding:.3rem .7rem;border-radius:4px;margin-bottom:1.3rem}
-  .hero-name{font-size:clamp(2.2rem,5.5vw,3.7rem);font-weight:800;letter-spacing:-1.5px;line-height:1.1;margin-bottom:.8rem}
-  .hero-sub{font-size:1.05rem;color:var(--gray);max-width:580px;margin-bottom:2.2rem;line-height:1.7}
-  .btn-row{display:flex;gap:.8rem;flex-wrap:wrap}
-  .btn{padding:.7rem 1.4rem;border-radius:6px;font-size:.88rem;font-weight:600;text-decoration:none;transition:all .2s;border:none;display:inline-block}
-  .btn-primary{background:var(--black);color:#fff}
-  .btn-primary:hover{background:#333}
-  .btn-outline{background:#fff;color:var(--black);border:1.5px solid var(--border)}
-  .btn-outline:hover{border-color:var(--black)}
+/* NAV */
+nav{position:fixed;top:0;width:100%;z-index:1000;transition:all .3s}
+nav.scrolled{background:rgba(10,10,15,.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-inner{max-width:1100px;margin:auto;display:flex;justify-content:space-between;align-items:center;height:64px;padding:0 2rem}
+.logo{font-weight:800;font-size:1.1rem;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none;letter-spacing:-.5px}
+.nav-links{display:flex;gap:2rem;list-style:none;align-items:center}
+.nav-links a{text-decoration:none;color:var(--muted);font-size:.85rem;font-weight:500;transition:color .2s;letter-spacing:.02em}
+.nav-links a:hover{color:var(--text)}
+.nav-cta{background:var(--grad);color:#fff!important;padding:.45rem 1.1rem;border-radius:6px;font-weight:600!important}
 
-  /* ABOUT */
-  #about{background:var(--light)}
-  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
-  .about-text p{color:var(--gray);margin-bottom:.9rem;font-size:1rem}
-  .about-stats{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
-  .stat-card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:1.2rem 1.4rem}
-  .stat-num{font-size:2rem;font-weight:800;letter-spacing:-1px;color:var(--black)}
-  .stat-desc{font-size:.8rem;color:var(--gray);margin-top:.1rem}
+/* HERO */
+#hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding:0 2rem}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% -10%,rgba(99,102,241,.18),transparent),radial-gradient(ellipse 50% 40% at 80% 60%,rgba(139,92,246,.1),transparent)}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 70% 70% at 50% 50%,black,transparent)}
+.hero-inner{max-width:1100px;margin:auto;position:relative;z-index:1;padding-top:5rem}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(99,102,241,.12);border:1px solid rgba(99,102,241,.3);color:#a5b4fc;font-size:.75rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:.4rem .9rem;border-radius:100px;margin-bottom:1.8rem}
+.hero-badge span{width:7px;height:7px;background:#6ee7b7;border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.3)}}
+h1.hero-name{font-size:clamp(2.8rem,6vw,4.8rem);font-weight:900;letter-spacing:-2.5px;line-height:1.05;margin-bottom:1rem}
+h1.hero-name span{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-title{font-size:1.1rem;color:var(--muted);max-width:600px;margin-bottom:2.5rem;line-height:1.75;font-weight:400}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:4rem}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.8rem 1.6rem;border-radius:8px;font-size:.9rem;font-weight:600;text-decoration:none;transition:all .25s;border:none;cursor:pointer}
+.btn-primary{background:var(--grad);color:#fff;box-shadow:0 4px 24px rgba(99,102,241,.35)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(99,102,241,.5)}
+.btn-ghost{background:transparent;color:var(--text);border:1px solid var(--border2)}
+.btn-ghost:hover{background:var(--bg3);border-color:rgba(99,102,241,.4)}
+.hero-stats{display:flex;gap:2.5rem;flex-wrap:wrap}
+.hstat{border-left:2px solid var(--accent);padding-left:1rem}
+.hstat-num{font-size:1.8rem;font-weight:800;letter-spacing:-1px;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hstat-label{font-size:.78rem;color:var(--muted);font-weight:500}
 
-  /* EXPERIENCE */
-  .exp-list{display:flex;flex-direction:column;gap:1.3rem;margin-top:1.5rem}
-  .exp-card{border:1px solid var(--border);border-radius:12px;padding:1.5rem 1.7rem;transition:box-shadow .2s}
-  .exp-card:hover{box-shadow:0 6px 24px rgba(0,0,0,.07)}
-  .exp-header{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:.3rem;margin-bottom:.25rem}
-  .exp-role{font-weight:700;font-size:1.02rem}
-  .exp-date{font-size:.78rem;color:#aaa;white-space:nowrap}
-  .exp-company{font-size:.86rem;color:var(--accent);font-weight:600;margin-bottom:.85rem}
-  .exp-bullets{list-style:none;padding:0}
-  .exp-bullets li{font-size:.87rem;color:var(--gray);padding:.2rem 0 .2rem 1.1rem;position:relative;line-height:1.55}
-  .exp-bullets li::before{content:"→";position:absolute;left:0;color:#bbb;font-size:.72rem;top:.3rem}
-  .exp-achievements{margin-top:.85rem;padding:.75rem 1rem;background:#f0f3ff;border-radius:8px}
-  .exp-ach-title{font-size:.7rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--accent);margin-bottom:.4rem}
-  .exp-tools{margin-top:.85rem;display:flex;flex-wrap:wrap;gap:.4rem}
-  .exp-tool{font-size:.7rem;font-weight:600;background:var(--light);color:#666;padding:.2rem .5rem;border-radius:4px}
+/* SECTIONS */
+section{padding:6rem 2rem}
+.container{max-width:1100px;margin:auto}
+.sec-label{display:inline-flex;align-items:center;gap:.5rem;font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#a5b4fc;margin-bottom:.6rem}
+.sec-label::before{content:'';width:20px;height:2px;background:var(--grad);border-radius:1px}
+.sec-title{font-size:2.1rem;font-weight:800;letter-spacing:-1px;margin-bottom:.5rem}
+.sec-sub{color:var(--muted);font-size:.95rem;margin-bottom:3rem;max-width:520px}
 
-  /* SKILLS */
-  #skills{background:var(--light)}
-  .skill-group{margin-bottom:1.8rem}
-  .skill-group-label{font-size:.75rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:#aaa;margin-bottom:.6rem}
-  .skills-grid{display:flex;flex-wrap:wrap;gap:.55rem}
-  .skill{padding:.42rem .95rem;border-radius:100px;font-size:.83rem;font-weight:500;border:1.5px solid var(--border);color:var(--gray);transition:all .2s;cursor:default}
-  .skill:hover{border-color:var(--accent);color:var(--accent);background:#eef1ff}
+/* ABOUT */
+#about{background:var(--bg2)}
+.about-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:5rem;align-items:center}
+.about-text p{color:var(--muted);margin-bottom:1rem;font-size:.97rem;line-height:1.8}
+.about-highlights{display:flex;flex-direction:column;gap:.7rem;margin-top:1.5rem}
+.highlight{display:flex;align-items:center;gap:.8rem;font-size:.88rem;color:var(--muted)}
+.highlight-dot{width:8px;height:8px;background:var(--grad);border-radius:50%;flex-shrink:0}
+.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.stat-card{background:var(--card);border:1px solid var(--border2);border-radius:14px;padding:1.5rem;position:relative;overflow:hidden;transition:transform .2s,border-color .2s}
+.stat-card:hover{transform:translateY(-3px);border-color:rgba(var(--accentRGB),.3)}
+.stat-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad)}
+.stat-num{font-size:2.2rem;font-weight:900;letter-spacing:-1.5px;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.stat-desc{font-size:.8rem;color:var(--muted);margin-top:.2rem}
 
-  /* PROJECTS */
-  .projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:1.2rem;margin-top:1.5rem}
-  .project-card{background:var(--light);border:1px solid var(--border);border-radius:12px;padding:1.4rem;transition:box-shadow .2s,transform .2s}
-  .project-card:hover{box-shadow:0 8px 28px rgba(0,0,0,.08);transform:translateY(-2px)}
-  .project-emoji{font-size:1.5rem;margin-bottom:.7rem}
-  .project-name{font-weight:700;font-size:1.02rem;margin-bottom:.35rem}
-  .project-bullets{list-style:none;padding:0;margin-bottom:1rem}
-  .project-bullets li{font-size:.83rem;color:var(--gray);padding:.16rem 0 .16rem 1rem;position:relative;line-height:1.5}
-  .project-bullets li::before{content:"·";position:absolute;left:0;color:#aaa;font-size:1rem}
-  .project-tags{display:flex;flex-wrap:wrap;gap:.38rem}
-  .tag{font-size:.7rem;font-weight:600;background:#fff;color:#666;padding:.22rem .55rem;border-radius:4px;border:1px solid var(--border)}
+/* EXPERIENCE */
+#experience{background:var(--bg)}
+.timeline{position:relative;padding-left:2rem}
+.timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,var(--accent),var(--accent2),transparent)}
+.tl-item{position:relative;margin-bottom:2.5rem}
+.tl-dot{position:absolute;left:-2.42rem;top:.3rem;width:12px;height:12px;border-radius:50%;background:var(--grad);border:2px solid var(--bg);box-shadow:0 0 12px rgba(var(--accentRGB),.5)}
+.exp-card{background:var(--card);border:1px solid var(--border2);border-radius:16px;padding:1.8rem 2rem;transition:all .25s}
+.exp-card:hover{border-color:rgba(var(--accentRGB),.3);box-shadow:0 8px 40px rgba(0,0,0,.3)}
+.exp-header{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:.5rem;margin-bottom:.3rem}
+.exp-role{font-weight:700;font-size:1.08rem}
+.exp-date{font-size:.78rem;background:rgba(var(--accentRGB),.12);color:#a5b4fc;padding:.3rem .8rem;border-radius:100px;font-weight:600;white-space:nowrap}
+.exp-company{font-size:.87rem;color:#a5b4fc;font-weight:600;margin-bottom:1.1rem;display:flex;align-items:center;gap:.4rem}
+.exp-company::before{content:'';width:4px;height:4px;border-radius:50%;background:#a5b4fc}
+.exp-bullets{list-style:none;padding:0;display:flex;flex-direction:column;gap:.4rem}
+.exp-bullets li{font-size:.87rem;color:var(--muted);padding-left:1.2rem;position:relative;line-height:1.6}
+.exp-bullets li::before{content:'▸';position:absolute;left:0;color:var(--accent);font-size:.7rem;top:.2rem}
+.ach-box{margin-top:1.2rem;background:rgba(var(--accentRGB),.07);border:1px solid rgba(var(--accentRGB),.15);border-radius:10px;padding:1rem 1.2rem}
+.ach-title{font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#a5b4fc;margin-bottom:.6rem}
+.tools-row{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1.2rem}
+.tool-chip{font-size:.7rem;font-weight:600;background:rgba(255,255,255,.04);border:1px solid var(--border2);color:var(--muted);padding:.22rem .6rem;border-radius:4px}
 
-  /* EDUCATION */
-  #education{background:var(--light)}
-  .edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem;margin-top:1.5rem}
-  .edu-card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:1.3rem 1.5rem}
-  .edu-degree{font-weight:700;font-size:.98rem;margin-bottom:.2rem}
-  .edu-school{font-size:.85rem;color:var(--accent);font-weight:600;margin-bottom:.2rem}
-  .edu-date{font-size:.78rem;color:#aaa}
+/* SKILLS */
+#skills{background:var(--bg2)}
+.skills-layout{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.2rem}
+.skill-category{background:var(--card);border:1px solid var(--border2);border-radius:14px;padding:1.4rem 1.6rem;transition:border-color .2s}
+.skill-category:hover{border-color:rgba(var(--accentRGB),.3)}
+.skill-cat-title{font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#a5b4fc;margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
+.skill-cat-icon{font-size:1rem}
+.skill-tags{display:flex;flex-wrap:wrap;gap:.5rem}
+.skill-tag{font-size:.8rem;font-weight:500;color:var(--muted);background:rgba(255,255,255,.04);border:1px solid var(--border2);padding:.35rem .8rem;border-radius:6px;transition:all .2s}
+.skill-tag:hover{background:rgba(var(--accentRGB),.1);border-color:rgba(var(--accentRGB),.3);color:#c7d2fe}
 
-  /* CERTIFICATIONS */
-  .cert-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem;margin-top:1.5rem}
-  .cert-card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:1.1rem 1.3rem;display:flex;align-items:flex-start;gap:.85rem;transition:box-shadow .2s}
-  .cert-card:hover{box-shadow:0 4px 16px rgba(0,0,0,.06)}
-  .cert-icon{font-size:1.3rem;flex-shrink:0;margin-top:.1rem}
-  .cert-name{font-weight:600;font-size:.88rem;line-height:1.4;margin-bottom:.2rem}
-  .cert-body{font-size:.78rem;color:var(--gray)}
+/* PROJECTS */
+#projects{background:var(--bg)}
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.2rem}
+.project-card{background:var(--card);border:1px solid var(--border2);border-radius:16px;padding:1.8rem;transition:all .3s;position:relative;overflow:hidden}
+.project-card::after{content:'';position:absolute;inset:0;background:var(--grad);opacity:0;transition:opacity .3s;pointer-events:none}
+.project-card:hover{transform:translateY(-4px);border-color:rgba(var(--accentRGB),.35);box-shadow:0 20px 50px rgba(0,0,0,.4)}
+.proj-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem}
+.proj-icon{width:46px;height:46px;background:rgba(var(--accentRGB),.12);border:1px solid rgba(var(--accentRGB),.2);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.4rem}
+.proj-name{font-weight:700;font-size:1rem;margin-bottom:.5rem}
+.proj-desc{font-size:.85rem;color:var(--muted);line-height:1.65;margin-bottom:1.2rem}
+.proj-tags{display:flex;flex-wrap:wrap;gap:.4rem}
+.ptag{font-size:.7rem;font-weight:600;background:rgba(var(--accentRGB),.1);color:#a5b4fc;padding:.25rem .65rem;border-radius:4px}
 
-  /* INDUSTRIAL EXPOSURE */
-  #exposure{background:#fff}
-  .exposure-list{display:flex;flex-direction:column;gap:1rem;margin-top:1.5rem}
-  .exposure-card{border:1px solid var(--border);border-radius:10px;padding:1.2rem 1.5rem;display:flex;gap:1.2rem;align-items:flex-start;transition:box-shadow .2s}
-  .exposure-card:hover{box-shadow:0 4px 16px rgba(0,0,0,.06)}
-  .exposure-icon{font-size:1.4rem;flex-shrink:0}
-  .exposure-role{font-weight:700;font-size:.95rem}
-  .exposure-company{font-size:.83rem;color:var(--accent);font-weight:600;margin-bottom:.5rem}
-  .exposure-date{font-size:.75rem;color:#aaa;margin-left:.5rem;font-weight:400}
+/* EDUCATION */
+#education{background:var(--bg2)}
+.edu-certs-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem}
+.edu-list{display:flex;flex-direction:column;gap:1rem}
+.edu-card{background:var(--card);border:1px solid var(--border2);border-radius:14px;padding:1.5rem 1.7rem;position:relative;overflow:hidden;transition:border-color .2s}
+.edu-card:hover{border-color:rgba(var(--accentRGB),.3)}
+.edu-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--grad)}
+.edu-degree{font-weight:700;font-size:.98rem;margin-bottom:.25rem}
+.edu-school{font-size:.85rem;color:#a5b4fc;font-weight:600;margin-bottom:.2rem}
+.edu-date{font-size:.75rem;color:var(--muted)}
+.cert-list{display:flex;flex-direction:column;gap:.8rem}
+.cert-card{background:var(--card);border:1px solid var(--border2);border-radius:12px;padding:1rem 1.2rem;display:flex;align-items:center;gap:1rem;transition:all .2s}
+.cert-card:hover{border-color:rgba(var(--accentRGB),.3);transform:translateX(4px)}
+.cert-icon{width:38px;height:38px;background:rgba(var(--accentRGB),.12);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.cert-name{font-weight:600;font-size:.86rem;margin-bottom:.15rem}
+.cert-body{font-size:.75rem;color:var(--muted)}
 
-  /* CONTACT */
-  #contact{background:var(--light)}
-  .contact-box{border:1px solid var(--border);border-radius:14px;padding:2.4rem;max-width:520px;background:#fff}
-  .contact-desc{color:var(--gray);margin-bottom:1.7rem;font-size:.95rem}
-  .contact-links{display:flex;flex-direction:column;gap:.85rem}
-  .contact-link{display:flex;align-items:center;gap:.8rem;text-decoration:none;color:var(--black);font-weight:500;font-size:.93rem;padding:.75rem 1rem;border:1.5px solid var(--border);border-radius:8px;transition:all .2s}
-  .contact-link:hover{border-color:var(--accent);color:var(--accent)}
-  .contact-link svg{flex-shrink:0;width:17px;height:17px}
+/* EXPOSURE */
+#exposure{background:var(--bg)}
+.exposure-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.2rem}
+.exp-card2{background:var(--card);border:1px solid var(--border2);border-radius:14px;padding:1.5rem;transition:all .2s}
+.exp-card2:hover{border-color:rgba(var(--accentRGB),.3);transform:translateY(-3px)}
+.exp2-icon{font-size:1.6rem;margin-bottom:.9rem}
+.exp2-role{font-weight:700;font-size:.97rem;margin-bottom:.2rem}
+.exp2-company{font-size:.82rem;color:#a5b4fc;font-weight:600;margin-bottom:.15rem}
+.exp2-date{font-size:.73rem;color:var(--muted);margin-bottom:.9rem}
+.exp2-bullets{list-style:none;padding:0}
+.exp2-bullets li{font-size:.83rem;color:var(--muted);padding:.18rem 0 .18rem 1rem;position:relative;line-height:1.55}
+.exp2-bullets li::before{content:'▸';position:absolute;left:0;color:var(--accent);font-size:.65rem;top:.26rem}
 
-  footer{text-align:center;padding:2rem;font-size:.8rem;color:#bbb;border-top:1px solid var(--border)}
+/* CONTACT */
+#contact{background:var(--bg2)}
+.contact-wrapper{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.contact-text h2{font-size:2rem;font-weight:800;letter-spacing:-1px;margin-bottom:1rem}
+.contact-text p{color:var(--muted);line-height:1.8;font-size:.95rem}
+.contact-links{display:flex;flex-direction:column;gap:.85rem}
+.contact-link{display:flex;align-items:center;gap:1rem;text-decoration:none;color:var(--text);font-weight:500;font-size:.92rem;padding:.9rem 1.2rem;background:var(--card);border:1px solid var(--border2);border-radius:12px;transition:all .25s}
+.contact-link:hover{border-color:rgba(var(--accentRGB),.4);background:rgba(var(--accentRGB),.07);transform:translateX(4px)}
+.contact-link-icon{width:38px;height:38px;background:rgba(var(--accentRGB),.12);border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.contact-link-icon svg{width:17px;height:17px}
+.contact-link-info small{display:block;font-size:.73rem;color:var(--muted);font-weight:400;margin-top:.05rem}
 
-  @media(max-width:660px){
-    .about-grid,.edu-grid{grid-template-columns:1fr}
-    .exp-header{flex-direction:column}
-    section{padding:4rem 1.2rem}
-    #hero{padding-top:8rem}
-    .nav-links{gap:1rem}
-  }
+/* FOOTER */
+footer{background:var(--bg);border-top:1px solid var(--border);padding:2rem;text-align:center;font-size:.8rem;color:var(--muted)}
+footer span{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:600}
+
+/* ANIMATIONS */
+.fade-up{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:760px){
+  .about-grid,.edu-certs-grid,.contact-wrapper{grid-template-columns:1fr}
+  .hero-stats{gap:1.5rem}
+  .nav-links .nav-cta{display:none}
+  .nav-links{gap:1.2rem}
+}
 </style>
 </head>
 <body>
 
-<nav>
+<!-- NAV -->
+<nav id="navbar">
   <div class="nav-inner">
-    <a class="logo" href="#hero">SS.</a>
+    <a class="logo" href="#hero">Sailesh S.</a>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#experience">Experience</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="#education">Education</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="#contact" class="nav-cta">Contact</a></li>
     </ul>
   </div>
 </nav>
 
 <!-- HERO -->
 <section id="hero">
-  <div class="container">
-    <div class="hero-tag">Open to Opportunities</div>
-    <h1 class="hero-name">Hi, I'm Sailesh Shanmugam 👋</h1>
-    <p class="hero-sub">Automation & Controls Engineer with 3+ years of experience in industrial robotics, PLC programming, and robotic cell commissioning across the UK and India.</p>
-    <div class="btn-row">
-      <a class="btn btn-primary" href="#projects">View My Work</a>
-      <a class="btn btn-outline" href="#contact">Get in Touch</a>
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-inner container">
+    <div class="hero-badge"><span></span>Open to Opportunities</div>
+    <h1 class="hero-name">Sailesh<br/><span>Shanmugam</span></h1>
+    <p class="hero-title">Automation & Controls Engineer specialising in robotic system integration, PLC programming, and virtual commissioning across manufacturing environments in the UK & India.</p>
+    <div class="hero-btns">
+      <a class="btn btn-primary" href="#projects">View My Work →</a>
+      <a class="btn btn-ghost" href="#contact">Get in Touch</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hstat"><div class="hstat-num">3+</div><div class="hstat-label">Years Experience</div></div>
+      <div class="hstat"><div class="hstat-num">2</div><div class="hstat-label">Countries</div></div>
+      <div class="hstat"><div class="hstat-num">20%</div><div class="hstat-label">Commissioning Time Saved</div></div>
+      <div class="hstat"><div class="hstat-num">MSc</div><div class="hstat-label">Newcastle University</div></div>
     </div>
   </div>
 </section>
@@ -158,29 +229,23 @@
 <section id="about">
   <div class="container">
     <div class="about-grid">
-      <div class="about-text">
-        <div class="section-label">About Me</div>
-        <h2 class="section-title">Engineer at the intersection of robotics & automation.</h2>
+      <div class="fade-up">
+        <div class="sec-label">About Me</div>
+        <h2 class="sec-title">Engineer at the intersection of robotics & automation.</h2>
         <p>Automation and robotics engineer with over three years of experience in industrial automation, robotic system integration, and commissioning within manufacturing environments in the UK and India.</p>
         <p>Experienced in PLC-based control systems, robotic welding cell simulation, pneumatic system integration, and control panel wiring. Passionate about system validation, troubleshooting, and cross-functional collaboration.</p>
+        <div class="about-highlights">
+          <div class="highlight"><div class="highlight-dot"></div>Robotic welding cell simulation & virtual commissioning</div>
+          <div class="highlight"><div class="highlight-dot"></div>PLC & HMI programming with Siemens TIA Portal & Codesys</div>
+          <div class="highlight"><div class="highlight-dot"></div>3D scanning & dimensional validation with HandySCAN</div>
+          <div class="highlight"><div class="highlight-dot"></div>MSc Automation & Control — Newcastle University, UK</div>
+        </div>
       </div>
-      <div class="about-stats">
-        <div class="stat-card">
-          <div class="stat-num">3+</div>
-          <div class="stat-desc">Years of experience</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num">2</div>
-          <div class="stat-desc">Countries worked in</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num">20%</div>
-          <div class="stat-desc">Reduction in commissioning time</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num">3</div>
-          <div class="stat-desc">Major robotic projects delivered</div>
-        </div>
+      <div class="stats-grid fade-up">
+        <div class="stat-card"><div class="stat-num">3+</div><div class="stat-desc">Years of industry experience</div></div>
+        <div class="stat-card"><div class="stat-num">2</div><div class="stat-desc">Countries worked in</div></div>
+        <div class="stat-card"><div class="stat-num">20%</div><div class="stat-desc">Reduction in commissioning time</div></div>
+        <div class="stat-card"><div class="stat-num">3</div><div class="stat-desc">Major robotic projects delivered</div></div>
       </div>
     </div>
   </div>
@@ -189,51 +254,58 @@
 <!-- EXPERIENCE -->
 <section id="experience">
   <div class="container">
-    <div class="section-label">Experience</div>
-    <h2 class="section-title">Where I've Worked</h2>
-    <div class="exp-list">
+    <div class="sec-label">Experience</div>
+    <h2 class="sec-title">Where I've Worked</h2>
+    <p class="sec-sub">Professional experience spanning industrial automation, robotic commissioning, and software automation.</p>
+    <div class="timeline">
 
-      <div class="exp-card">
-        <div class="exp-header">
-          <div class="exp-role">Automation Engineer</div>
-          <div class="exp-date">Mar 2023 – Nov 2025</div>
-        </div>
-        <div class="exp-company">Merit Group of Services Ltd. · UK</div>
-        <ul class="exp-bullets">
-          <li>Wired and commissioned electrical control panels for robotic welding fixtures, reducing production downtime.</li>
-          <li>Integrated pneumatic circuits, actuators, and sensors within robotic cells for reliable mechanical operation.</li>
-          <li>Developed and validated robotic welding simulations using MotoSim EG-VRC with collision detection and virtual commissioning.</li>
-          <li>Programmed PLC-based control systems and configured HMI interfaces for real-time system monitoring.</li>
-          <li>Performed 3D scanning and dimensional validation using HandyScan and VX Elements to ensure system alignment.</li>
-          <li>Prepared SOPs, technical manuals, and maintenance procedures to support long-term system reliability.</li>
-        </ul>
-        <div class="exp-achievements">
-          <div class="exp-ach-title">Key Achievements</div>
+      <div class="tl-item fade-up">
+        <div class="tl-dot"></div>
+        <div class="exp-card">
+          <div class="exp-header">
+            <div class="exp-role">Automation Engineer</div>
+            <div class="exp-date">Mar 2023 – Nov 2025</div>
+          </div>
+          <div class="exp-company">Merit Group of Services Ltd. · United Kingdom</div>
           <ul class="exp-bullets">
-            <li>Reduced commissioning time by 20% via simulation pre-validation and digital comparison.</li>
-            <li>Improved factory material flow by optimising navigation logic for mobile platforms.</li>
-            <li>Conducted digital deviation analysis to verify dimensional accuracy of installed systems.</li>
+            <li>Wired and commissioned electrical control panels for robotic welding fixtures, ensuring stable automation and reducing production downtime.</li>
+            <li>Integrated pneumatic circuits, actuators, and sensors within robotic cells for reliable mechanical operation.</li>
+            <li>Developed and validated robotic welding simulations using MotoSim EG-VRC with collision detection and virtual commissioning.</li>
+            <li>Programmed PLC-based control systems and configured HMI interfaces for real-time system monitoring.</li>
+            <li>Performed 3D scanning and dimensional validation using HandyScan and VX Elements to ensure system alignment.</li>
+            <li>Prepared SOPs, technical manuals, and maintenance procedures to support long-term system reliability.</li>
           </ul>
-        </div>
-        <div class="exp-tools">
-          <span class="exp-tool">Siemens TIA Portal</span><span class="exp-tool">Codesys</span><span class="exp-tool">Rockwell CCW</span><span class="exp-tool">IX Developer</span><span class="exp-tool">MotoSim EG-VRC</span><span class="exp-tool">VX Elements</span><span class="exp-tool">HandyScan</span><span class="exp-tool">KUKA KMP 1500</span><span class="exp-tool">Kemaro K900</span>
+          <div class="ach-box">
+            <div class="ach-title">🏆 Key Achievements</div>
+            <ul class="exp-bullets">
+              <li>Reduced commissioning time by 20% through simulation pre-validation and digital comparison techniques.</li>
+              <li>Improved factory material flow efficiency by optimising navigation logic for mobile platforms.</li>
+              <li>Conducted digital deviation analysis to verify dimensional accuracy of installed systems.</li>
+            </ul>
+          </div>
+          <div class="tools-row">
+            <span class="tool-chip">Siemens TIA Portal</span><span class="tool-chip">Codesys</span><span class="tool-chip">Rockwell CCW</span><span class="tool-chip">IX Developer</span><span class="tool-chip">MotoSim EG-VRC</span><span class="tool-chip">VX Elements</span><span class="tool-chip">HandyScan</span><span class="tool-chip">KUKA KMP 1500</span><span class="tool-chip">Kemaro K900</span>
+          </div>
         </div>
       </div>
 
-      <div class="exp-card">
-        <div class="exp-header">
-          <div class="exp-role">Programmer Analyst</div>
-          <div class="exp-date">Jul 2019 – Feb 2021</div>
-        </div>
-        <div class="exp-company">Cognizant Technology Solutions Ltd. · India</div>
-        <ul class="exp-bullets">
-          <li>Developed and deployed automation workflows using UiPath for data-driven business processes.</li>
-          <li>Monitored, debugged, and maintained automation bots across multiple production environments.</li>
-          <li>Supported incident resolution and system uptime in collaboration with global teams.</li>
-          <li>Documented technical specifications, deployment reports, and audit documentation.</li>
-        </ul>
-        <div class="exp-tools">
-          <span class="exp-tool">UiPath (RPA)</span><span class="exp-tool">IBM AS400</span><span class="exp-tool">CyberArk</span><span class="exp-tool">ServiceNow</span>
+      <div class="tl-item fade-up">
+        <div class="tl-dot"></div>
+        <div class="exp-card">
+          <div class="exp-header">
+            <div class="exp-role">Programmer Analyst</div>
+            <div class="exp-date">Jul 2019 – Feb 2021</div>
+          </div>
+          <div class="exp-company">Cognizant Technology Solutions Ltd. · India</div>
+          <ul class="exp-bullets">
+            <li>Developed and deployed automation workflows using UiPath for data-driven business processes.</li>
+            <li>Monitored, debugged, and maintained automation bots across multiple production environments.</li>
+            <li>Supported incident resolution and system uptime in collaboration with global teams.</li>
+            <li>Documented technical specifications, deployment reports, and audit documentation.</li>
+          </ul>
+          <div class="tools-row">
+            <span class="tool-chip">UiPath (RPA)</span><span class="tool-chip">IBM AS400</span><span class="tool-chip">CyberArk</span><span class="tool-chip">ServiceNow</span>
+          </div>
         </div>
       </div>
 
@@ -244,36 +316,45 @@
 <!-- SKILLS -->
 <section id="skills">
   <div class="container">
-    <div class="section-label">Skills</div>
-    <h2 class="section-title">My Tech Stack</h2>
-    <div class="skill-group">
-      <div class="skill-group-label">Industrial Automation & Controls</div>
-      <div class="skills-grid">
-        <span class="skill">PLC Programming</span><span class="skill">HMI Design</span><span class="skill">Control Systems</span><span class="skill">System Integration</span><span class="skill">Industrial Automation</span>
+    <div class="sec-label">Skills</div>
+    <h2 class="sec-title">Technical Expertise</h2>
+    <p class="sec-sub">A broad skill set spanning automation, robotics, hardware, and software tools.</p>
+    <div class="skills-layout">
+      <div class="skill-category fade-up">
+        <div class="skill-cat-title"><span class="skill-cat-icon">⚙️</span>Industrial Automation & Controls</div>
+        <div class="skill-tags">
+          <span class="skill-tag">PLC Programming</span><span class="skill-tag">HMI Design</span><span class="skill-tag">Control Systems</span><span class="skill-tag">System Integration</span><span class="skill-tag">OEE Dashboards</span>
+        </div>
       </div>
-    </div>
-    <div class="skill-group">
-      <div class="skill-group-label">Robotics Systems</div>
-      <div class="skills-grid">
-        <span class="skill">Robotic Welding Cells</span><span class="skill">Robot Simulation</span><span class="skill">Virtual Commissioning</span><span class="skill">Motion Validation</span><span class="skill">AMR Navigation</span>
+      <div class="skill-category fade-up">
+        <div class="skill-cat-title"><span class="skill-cat-icon">🤖</span>Robotics Systems</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Robotic Welding Cells</span><span class="skill-tag">Robot Simulation</span><span class="skill-tag">Virtual Commissioning</span><span class="skill-tag">Motion Validation</span><span class="skill-tag">AMR Navigation</span>
+        </div>
       </div>
-    </div>
-    <div class="skill-group">
-      <div class="skill-group-label">Electrical & Hardware</div>
-      <div class="skills-grid">
-        <span class="skill">Sensors & Actuators</span><span class="skill">Pneumatic Circuits</span><span class="skill">Control Panel Wiring</span>
+      <div class="skill-category fade-up">
+        <div class="skill-cat-title"><span class="skill-cat-icon">🔌</span>Electrical & Hardware</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Sensors & Actuators</span><span class="skill-tag">Pneumatic Circuits</span><span class="skill-tag">Control Panel Wiring</span><span class="skill-tag">Welding Jig Commissioning</span>
+        </div>
       </div>
-    </div>
-    <div class="skill-group">
-      <div class="skill-group-label">Inspection & Validation</div>
-      <div class="skills-grid">
-        <span class="skill">3D Scanning</span><span class="skill">Dimensional Validation</span><span class="skill">CAD Comparison</span><span class="skill">Deviation Analysis</span>
+      <div class="skill-category fade-up">
+        <div class="skill-cat-title"><span class="skill-cat-icon">📐</span>Inspection & Validation</div>
+        <div class="skill-tags">
+          <span class="skill-tag">3D Scanning</span><span class="skill-tag">Dimensional Validation</span><span class="skill-tag">CAD Comparison</span><span class="skill-tag">Deviation Analysis</span>
+        </div>
       </div>
-    </div>
-    <div class="skill-group">
-      <div class="skill-group-label">Tools & Platforms</div>
-      <div class="skills-grid">
-        <span class="skill">Siemens TIA Portal</span><span class="skill">Codesys</span><span class="skill">Rockwell CCW</span><span class="skill">IX Developer</span><span class="skill">MotoSim EG-VRC</span><span class="skill">VX Elements</span><span class="skill">HandyScan 3D</span><span class="skill">UiPath (RPA)</span><span class="skill">Python</span>
+      <div class="skill-category fade-up">
+        <div class="skill-cat-title"><span class="skill-cat-icon">🛠️</span>Tools & Platforms</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Siemens TIA Portal</span><span class="skill-tag">Codesys</span><span class="skill-tag">Rockwell CCW</span><span class="skill-tag">MotoSim EG-VRC</span><span class="skill-tag">VX Elements</span><span class="skill-tag">HandyScan 3D</span><span class="skill-tag">UiPath</span><span class="skill-tag">Python</span>
+        </div>
+      </div>
+      <div class="skill-category fade-up">
+        <div class="skill-cat-title"><span class="skill-cat-icon">📄</span>Documentation</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Technical Manuals</span><span class="skill-tag">SOP Development</span><span class="skill-tag">Work Instructions</span><span class="skill-tag">Validation Reports</span>
+        </div>
       </div>
     </div>
   </div>
@@ -282,46 +363,44 @@
 <!-- PROJECTS -->
 <section id="projects">
   <div class="container">
-    <div class="section-label">Projects</div>
-    <h2 class="section-title">Things I've Built & Delivered</h2>
+    <div class="sec-label">Projects</div>
+    <h2 class="sec-title">Things I've Built & Delivered</h2>
+    <p class="sec-sub">Real-world engineering projects spanning simulation, navigation, and precision inspection.</p>
     <div class="projects-grid">
-      <div class="project-card">
-        <div class="project-emoji">🤖</div>
-        <div class="project-name">Yaskawa Welding Robot Simulation</div>
-        <ul class="project-bullets">
-          <li>Developed robotic welding simulation models for industrial automation applications.</li>
-          <li>Performed collision detection, reachability analysis, and workspace optimisation.</li>
-          <li>Executed simulation-to-real validation to ensure accurate behaviour transfer to physical robots.</li>
-        </ul>
-        <div class="project-tags">
-          <span class="tag">MotoSim EG-VRC</span><span class="tag">Virtual Commissioning</span><span class="tag">Yaskawa</span>
+
+      <div class="project-card fade-up">
+        <div class="proj-top">
+          <div class="proj-icon">🤖</div>
+        </div>
+        <div class="proj-name">Yaskawa Welding Robot Simulation</div>
+        <p class="proj-desc">Developed robotic welding simulation models for industrial applications. Performed collision detection, reachability analysis, and workspace optimisation with simulation-to-real validation.</p>
+        <div class="proj-tags">
+          <span class="ptag">MotoSim EG-VRC</span><span class="ptag">Virtual Commissioning</span><span class="ptag">Yaskawa</span><span class="ptag">Collision Detection</span>
         </div>
       </div>
-      <div class="project-card">
-        <div class="project-emoji">🏭</div>
-        <div class="project-name">Autonomous Mobile Robot Navigation</div>
-        <ul class="project-bullets">
-          <li>Designed and tested motion planning and navigation strategies for industrial AMRs.</li>
-          <li>Conducted shop-floor validation for safe and efficient real-world robot operation.</li>
-          <li>Resolved path planning issues during live production trials, reducing operational downtime.</li>
-          <li>Produced standardised test and performance validation reports.</li>
-        </ul>
-        <div class="project-tags">
-          <span class="tag">KUKA KMP 1500</span><span class="tag">Kemaro K900</span><span class="tag">AMR Navigation</span>
+
+      <div class="project-card fade-up">
+        <div class="proj-top">
+          <div class="proj-icon">🏭</div>
+        </div>
+        <div class="proj-name">Autonomous Mobile Robot Navigation</div>
+        <p class="proj-desc">Designed and tested motion planning strategies for industrial AMRs. Conducted shop-floor validation and resolved path planning issues during live production trials, reducing operational downtime.</p>
+        <div class="proj-tags">
+          <span class="ptag">KUKA KMP 1500</span><span class="ptag">Kemaro K900</span><span class="ptag">AMR Navigation</span><span class="ptag">Path Planning</span>
         </div>
       </div>
-      <div class="project-card">
-        <div class="project-emoji">📐</div>
-        <div class="project-name">3D Scanning & Inspection</div>
-        <ul class="project-bullets">
-          <li>Performed dimensional validation of manufactured components using HandySCAN 3D.</li>
-          <li>Conducted CAD comparison and deviation mapping against design specifications.</li>
-          <li>Supported process improvement by analysing recurring dimensional deviations.</li>
-        </ul>
-        <div class="project-tags">
-          <span class="tag">HandySCAN 3D</span><span class="tag">VX Elements</span><span class="tag">Dimensional Validation</span>
+
+      <div class="project-card fade-up">
+        <div class="proj-top">
+          <div class="proj-icon">📐</div>
+        </div>
+        <div class="proj-name">3D Scanning & Dimensional Inspection</div>
+        <p class="proj-desc">Performed dimensional validation of manufactured components using HandySCAN 3D. Conducted CAD comparison and deviation mapping to support process improvement initiatives.</p>
+        <div class="proj-tags">
+          <span class="ptag">HandySCAN 3D</span><span class="ptag">VX Elements</span><span class="ptag">CAD Comparison</span><span class="ptag">Deviation Analysis</span>
         </div>
       </div>
+
     </div>
   </div>
 </section>
@@ -329,100 +408,69 @@
 <!-- EDUCATION -->
 <section id="education">
   <div class="container">
-    <div class="section-label">Education</div>
-    <h2 class="section-title">Academic Background</h2>
-    <div class="edu-grid">
-      <div class="edu-card">
-        <div class="edu-degree">MSc. Automation & Control</div>
-        <div class="edu-school">Newcastle University · UK</div>
-        <div class="edu-date">Graduated December 2022</div>
+    <div class="sec-label">Education & Credentials</div>
+    <h2 class="sec-title">Qualifications</h2>
+    <p class="sec-sub">Academic background supported by industry-relevant certifications and training.</p>
+    <div class="edu-certs-grid">
+      <div class="fade-up">
+        <h3 style="font-size:.82rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem">🎓 Degrees</h3>
+        <div class="edu-list">
+          <div class="edu-card">
+            <div class="edu-degree">MSc. Automation & Control</div>
+            <div class="edu-school">Newcastle University · United Kingdom</div>
+            <div class="edu-date">Graduated December 2022</div>
+          </div>
+          <div class="edu-card">
+            <div class="edu-degree">BE. Electronics & Instrumentation</div>
+            <div class="edu-school">Valliammai Engineering College · India</div>
+            <div class="edu-date">Graduated November 2019</div>
+          </div>
+        </div>
       </div>
-      <div class="edu-card">
-        <div class="edu-degree">BE. Electronics & Instrumentation</div>
-        <div class="edu-school">Valliammai Engineering College · India</div>
-        <div class="edu-date">Graduated November 2019</div>
-      </div>
-    </div>
-
-    <!-- CERTIFICATIONS -->
-    <div style="margin-top:3rem">
-      <div class="section-label">Certifications & Training</div>
-      <h2 class="section-title" style="margin-bottom:0">Certifications</h2>
-      <div class="cert-grid" style="margin-top:1.3rem">
-        <div class="cert-card">
-          <div class="cert-icon">🏭</div>
-          <div>
-            <div class="cert-name">Siemens S7-1200 PLC Programming</div>
-            <div class="cert-body">TIA Portal · Ladder Logic</div>
-          </div>
-        </div>
-        <div class="cert-card">
-          <div class="cert-icon">🤖</div>
-          <div>
-            <div class="cert-name">Robotics & Control Job Simulation</div>
-            <div class="cert-body">Johnson & Johnson Medtech · Forage</div>
-          </div>
-        </div>
-        <div class="cert-card">
-          <div class="cert-icon">⚙️</div>
-          <div>
-            <div class="cert-name">Operations Industrial Engineer Simulation</div>
-            <div class="cert-body">Siemens · Forage</div>
-          </div>
-        </div>
-        <div class="cert-card">
-          <div class="cert-icon">💡</div>
-          <div>
-            <div class="cert-name">Become a PLC Developer</div>
-            <div class="cert-body">LinkedIn Learning</div>
-          </div>
-        </div>
-        <div class="cert-card">
-          <div class="cert-icon">🐍</div>
-          <div>
-            <div class="cert-name">Learn Python 3</div>
-            <div class="cert-body">Codecademy</div>
-          </div>
+      <div class="fade-up">
+        <h3 style="font-size:.82rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem">📜 Certifications</h3>
+        <div class="cert-list">
+          <div class="cert-card"><div class="cert-icon">🏭</div><div><div class="cert-name">Siemens S7-1200 PLC Programming</div><div class="cert-body">TIA Portal · Ladder Logic</div></div></div>
+          <div class="cert-card"><div class="cert-icon">🤖</div><div><div class="cert-name">Robotics & Control Job Simulation</div><div class="cert-body">Johnson & Johnson Medtech · Forage</div></div></div>
+          <div class="cert-card"><div class="cert-icon">⚙️</div><div><div class="cert-name">Operations Industrial Engineer Simulation</div><div class="cert-body">Siemens · Forage</div></div></div>
+          <div class="cert-card"><div class="cert-icon">💡</div><div><div class="cert-name">Become a PLC Developer</div><div class="cert-body">LinkedIn Learning</div></div></div>
+          <div class="cert-card"><div class="cert-icon">🐍</div><div><div class="cert-name">Learn Python 3</div><div class="cert-body">Codecademy</div></div></div>
         </div>
       </div>
     </div>
 
-    <!-- INDUSTRIAL EXPOSURE -->
-    <div style="margin-top:3rem">
-      <div class="section-label">Industrial Exposure</div>
-      <h2 class="section-title" style="margin-bottom:0">Internships & Training</h2>
-      <div class="exposure-list" style="margin-top:1.3rem">
-        <div class="exposure-card">
-          <div class="exposure-icon">🔧</div>
-          <div>
-            <div class="exposure-role">Production Intern <span class="exposure-date">August 2018</span></div>
-            <div class="exposure-company">Butterfly Gandhimadhi Appliances Ltd. · India</div>
-            <ul class="exp-bullets">
-              <li>Observed automated injection moulding processes and machine parameter tuning in production settings.</li>
-              <li>Gained exposure to material reuse and scrap reduction strategies aligned with lean manufacturing.</li>
-            </ul>
-          </div>
+    <!-- EXPOSURE -->
+    <div style="margin-top:4rem" id="exposure">
+      <h3 style="font-size:.82rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:1.5rem">🏗️ Industrial Exposure</h3>
+      <div class="exposure-grid">
+        <div class="exp-card2 fade-up">
+          <div class="exp2-icon">🔧</div>
+          <div class="exp2-role">Production Intern</div>
+          <div class="exp2-company">Butterfly Gandhimadhi Appliances Ltd.</div>
+          <div class="exp2-date">August 2018 · India</div>
+          <ul class="exp2-bullets">
+            <li>Observed automated injection moulding processes and machine parameter tuning.</li>
+            <li>Gained exposure to lean manufacturing and scrap reduction strategies.</li>
+          </ul>
         </div>
-        <div class="exposure-card">
-          <div class="exposure-icon">🖨️</div>
-          <div>
-            <div class="exposure-role">In-plant Trainee <span class="exposure-date">December 2017</span></div>
-            <div class="exposure-company">G-Plast Private Ltd. · India</div>
-            <ul class="exp-bullets">
-              <li>Acquired knowledge of CNC-guided machining and rapid prototyping methods including SLA and SLS.</li>
-              <li>Observed advanced moulding techniques across automotive, medical, and electronics sectors.</li>
-            </ul>
-          </div>
+        <div class="exp-card2 fade-up">
+          <div class="exp2-icon">🖨️</div>
+          <div class="exp2-role">In-plant Trainee</div>
+          <div class="exp2-company">G-Plast Private Ltd.</div>
+          <div class="exp2-date">December 2017 · India</div>
+          <ul class="exp2-bullets">
+            <li>Studied CNC-guided machining and rapid prototyping methods (SLA & SLS).</li>
+            <li>Observed advanced moulding across automotive, medical, and electronics sectors.</li>
+          </ul>
         </div>
-        <div class="exposure-card">
-          <div class="exposure-icon">🚗</div>
-          <div>
-            <div class="exposure-role">Industrial Visit <span class="exposure-date">September 2017</span></div>
-            <div class="exposure-company">Hyundai Motors India Ltd. · India</div>
-            <ul class="exp-bullets">
-              <li>Studied end-to-end vehicle production lines including press, paint, assembly, engine, and transmission shops.</li>
-            </ul>
-          </div>
+        <div class="exp-card2 fade-up">
+          <div class="exp2-icon">🚗</div>
+          <div class="exp2-role">Industrial Visit</div>
+          <div class="exp2-company">Hyundai Motors India Ltd.</div>
+          <div class="exp2-date">September 2017 · India</div>
+          <ul class="exp2-bullets">
+            <li>Studied end-to-end vehicle production lines including press, paint, assembly, engine, and transmission shops.</li>
+          </ul>
         </div>
       </div>
     </div>
@@ -432,25 +480,54 @@
 <!-- CONTACT -->
 <section id="contact">
   <div class="container">
-    <div class="section-label">Contact</div>
-    <h2 class="section-title">Let's Talk</h2>
-    <div class="contact-box">
-      <p class="contact-desc">I'm open to new roles, collaborations, or just a conversation about automation and robotics. Feel free to reach out!</p>
-      <div class="contact-links">
+    <div class="contact-wrapper">
+      <div class="fade-up">
+        <div class="sec-label">Contact</div>
+        <h2 style="font-size:2.1rem;font-weight:800;letter-spacing:-1px;margin-bottom:1rem;line-height:1.2">Let's build something<br/><span style="background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent">great together.</span></h2>
+        <p style="color:var(--muted);line-height:1.8;font-size:.95rem;margin-bottom:1.5rem">I'm open to new roles, freelance projects, or collaborations in automation and robotics. I reply fast — don't hesitate to reach out!</p>
+        <div style="display:flex;gap:.8rem;flex-wrap:wrap">
+          <div style="background:rgba(var(--accentRGB),.1);border:1px solid rgba(var(--accentRGB),.2);border-radius:8px;padding:.6rem 1rem;font-size:.8rem;color:#a5b4fc;font-weight:600">⚡ Usually responds within 24h</div>
+        </div>
+      </div>
+      <div class="contact-links fade-up">
         <a class="contact-link" href="mailto:sailesh.s1997@gmail.com">
-          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-          sailesh.s1997@gmail.com
+          <div class="contact-link-icon">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          </div>
+          <div>sailesh.s1997@gmail.com<small>Send me an email</small></div>
         </a>
         <a class="contact-link" href="https://www.linkedin.com/in/s-sailesh/" target="_blank">
-          <svg fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          linkedin.com/in/s-sailesh
+          <div class="contact-link-icon">
+            <svg fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </div>
+          <div>linkedin.com/in/s-sailesh<small>Connect on LinkedIn</small></div>
         </a>
       </div>
     </div>
   </div>
 </section>
 
-<footer>Built with ❤️ by Sailesh Shanmugam · 2026</footer>
+<footer>
+  <p>Designed & built by <span>Sailesh Shanmugam</span> · 2026</p>
+</footer>
 
+<script>
+  // Navbar scroll effect
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // Scroll fade-in animations
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if(e.isIntersecting){
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        obs.unobserve(e.target);
+      }
+    });
+  }, {threshold: 0.1});
+  document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+</script>
 </body>
 </html>
