@@ -181,13 +181,80 @@ footer span{background:var(--grad);-webkit-background-clip:text;-webkit-text-fil
 .fade-up{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease}
 .fade-up.visible{opacity:1;transform:translateY(0)}
 
-@media(max-width:760px){
+/* 4K / Large screens */
+@media(min-width:1600px){
+  .container{max-width:1300px}
+  h1.hero-name{font-size:5.5rem}
+  .sec-title{font-size:2.4rem}
+}
+
+/* Tablet landscape (1024px) */
+@media(max-width:1024px){
+  .about-grid{grid-template-columns:1fr;gap:3rem}
+  .hero-layout{gap:2.5rem}
+  .hero-photo{width:260px;height:260px}
+  .hero-photo-wrap{width:260px;height:260px}
+  .hero-photo-placeholder{width:260px;height:260px}
+  .contact-wrapper{gap:2.5rem}
+}
+
+/* Tablet portrait (768px) */
+@media(max-width:768px){
   .about-grid,.edu-certs-grid,.contact-wrapper{grid-template-columns:1fr}
   .hero-layout{grid-template-columns:1fr}
-  .hero-photo-wrap{display:flex;justify-content:center;order:-1}
-  .hero-stats{gap:1.5rem}
-  .nav-links .nav-cta{display:none}
+  .hero-photo-wrap{display:flex;justify-content:center;order:-1;margin:auto}
+  .hero-stats{gap:1.5rem;flex-wrap:wrap}
   .nav-links{gap:1.2rem}
+  .nav-links a:not(.nav-cta){font-size:.78rem}
+  .timeline{padding-left:1.5rem}
+  .tl-dot{left:-1.92rem}
+  .exp-card{padding:1.4rem 1.5rem}
+  .skills-layout{grid-template-columns:1fr 1fr}
+  .projects-grid{grid-template-columns:1fr 1fr}
+  .exposure-grid{grid-template-columns:1fr 1fr}
+  .sec-title{font-size:1.7rem}
+  section{padding:4.5rem 1.5rem}
+}
+
+/* Mobile (480px) */
+@media(max-width:480px){
+  .nav-links .nav-cta{display:none}
+  .nav-links{gap:.9rem}
+  .nav-links a{font-size:.75rem}
+  h1.hero-name{font-size:2.8rem;letter-spacing:-1.5px}
+  .hero-title{font-size:.95rem}
+  .hero-stats{gap:1rem}
+  .hstat-num{font-size:1.5rem}
+  .hero-photo{width:200px;height:200px}
+  .hero-photo-wrap{width:200px;height:200px}
+  .hero-photo-placeholder{width:200px;height:200px}
+  .skills-layout{grid-template-columns:1fr}
+  .projects-grid{grid-template-columns:1fr}
+  .exposure-grid{grid-template-columns:1fr}
+  .edu-certs-grid{grid-template-columns:1fr}
+  .stats-grid{grid-template-columns:1fr 1fr}
+  .exp-card{padding:1.2rem 1.2rem}
+  .ach-box{padding:.8rem 1rem}
+  section{padding:4rem 1rem}
+  .sec-title{font-size:1.5rem}
+  .contact-wrapper{grid-template-columns:1fr}
+}
+
+/* Small mobile (320px) */
+@media(max-width:360px){
+  .nav-inner{padding:0 1rem}
+  .nav-links{gap:.6rem}
+  .nav-links a{font-size:.7rem}
+  h1.hero-name{font-size:2.3rem}
+  .hero-stats{gap:.8rem}
+  .hstat{padding-left:.7rem}
+  .hstat-num{font-size:1.3rem}
+  .hstat-label{font-size:.68rem}
+  .hero-photo{width:170px;height:170px}
+  .hero-photo-wrap{width:170px;height:170px}
+  .hero-photo-placeholder{width:170px;height:170px}
+  .btn{padding:.65rem 1.1rem;font-size:.82rem}
+  .stat-num{font-size:1.8rem}
 }
 </style>
 </head>
