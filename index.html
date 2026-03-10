@@ -37,6 +37,7 @@ nav.scrolled{background:rgba(10,10,15,.85);backdrop-filter:blur(20px);border-bot
 .nav-links{display:flex;gap:2rem;list-style:none;align-items:center}
 .nav-links a{text-decoration:none;color:var(--muted);font-size:.85rem;font-weight:500;transition:color .2s;letter-spacing:.02em}
 .nav-links a:hover{color:var(--text)}
+.nav-links a.active{color:#fff}
 .nav-cta{background:var(--grad);color:#fff!important;padding:.45rem 1.1rem;border-radius:6px;font-weight:600!important}
 
 /* HERO */
@@ -463,6 +464,22 @@ footer span{background:var(--grad);-webkit-background-clip:text;-webkit-text-fil
 <script>
   const navbar = document.getElementById('navbar');
   window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 40));
+
+  // Scroll spy
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a:not(.nav-cta)');
+  const scrollSpy = () => {
+    let current = '';
+    sections.forEach(sec => {
+      if (window.scrollY >= sec.offsetTop - 100) current = sec.getAttribute('id');
+    });
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === '#' + current) link.classList.add('active');
+    });
+  };
+  window.addEventListener('scroll', scrollSpy);
+  scrollSpy();
   const obs = new IntersectionObserver((entries) => {
     entries.forEach((e, i) => {
       if(e.isIntersecting){ setTimeout(() => e.target.classList.add('visible'), i * 80); obs.unobserve(e.target); }
